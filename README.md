@@ -1,7 +1,7 @@
 # Complete Protein-Protein Interaction Analysis Workflow
 ## From AlphaFold3 Prediction to Validation
 
-**A complete journey through structure prediction, visualization, interaction analysis, and validation**
+**A comprehensive, end-to-end workflow for predicting, visualizing, and validating protein-protein interactions. Includes AlphaFold3 integration, PyMOL visualization scripts, Arpeggio interaction detection, and quantitative validation against experimental structures.**
 
 ---
 
