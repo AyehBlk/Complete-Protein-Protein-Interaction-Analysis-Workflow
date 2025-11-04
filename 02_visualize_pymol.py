@@ -18,7 +18,7 @@ Example:
     python 02_visualize_pymol.py ../examples/mdm2_p53/results/alphafold/fold_model_0.pdb \
         --chain1 A --chain2 B --output ../examples/mdm2_p53/results/figures
 
-Author: [Your Name]
+Author: AyehBlk
 Date: October 31, 2025
 """
 
@@ -226,11 +226,30 @@ ray 2400, 2400
 png overview.png, dpi=300
 
 # ============================================================================
-# View 2: Interface
+# Export and View 2: Interface
 # ============================================================================
 select interface1, chain {chain1} within {interface_distance} of chain {chain2}
 select interface2, chain {chain2} within {interface_distance} of chain {chain1}
 select interface, interface1 or interface2
+
+##Save 'interface' object to a Text File
+
+# Create a list and save to file
+stored.residues = []
+iterate interface and name CA, stored.residues.append(f"{chain}\t{resn}\t{resi}")
+
+# Remove duplicates and sort
+stored.residues = sorted(set(stored.residues))
+
+# Save to file on your PC
+with open('interface_residues.txt', 'w') as f:
+    f.write("Chain\tResidue\tNumber\n")
+    for res in stored.residues:
+        f.write(res + "\n")
+
+print(f"Saved {len(stored.residues)} interface residues")
+
+##view and export image
 
 hide everything, protein
 show cartoon, protein
